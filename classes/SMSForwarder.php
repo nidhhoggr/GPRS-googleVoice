@@ -1,17 +1,46 @@
 <?php
 
+/**
+ * SMSForwarder 
+ *
+ * This class is not only a concrete implementation of an SMSProcessor
+ * but it also acts to decouple database persietnce from abstracted functionality
+ * in the GPRS_SMS_API. The main purpose of this class is to play Google Tranlsate
+ * MP3's of the lastest text message recieved and them as processed.
+ *
+ * @uses GPRS_SMS_API
+ * @uses SMSProcessor
+ * @package 
+ * @version $id$
+ * @copyright 
+ * @author Joseph Persie <joseph@supraliminalsolutions.com> 
+ * @license 
+ */
 class SMSForwarder extends GPRS_SMS_API implements SMSProcessor
 {
     const AUDIO_DIR = 'audio';
 
     const GOOGLE_TRANSLATE_API_CALL = 'http://translate.google.com/translate_tts?ie=UTF-8&tl=en&q=';
 
+    /**
+     * init
+     * 
+     * @access public
+     * @return void
+     */
     public function init()
     {   
         R::setup('mysql:host=localhost;dbname=gprs','root','');
     }
 
-    protected function _saveSms($sms)
+    /**
+     * _saveSms
+     * 
+     * @param array $sms 
+     * @access protected
+     * @return void
+     */
+    protected function _saveSms($sms = array())
     {
         $sms_bean = R::dispense('sms');
 
@@ -28,6 +57,12 @@ class SMSForwarder extends GPRS_SMS_API implements SMSProcessor
         $id = R::store($sms_bean); 
     }
 
+    /**
+     * processIncomingSMS
+     * 
+     * @access public
+     * @return void
+     */
     public function processIncomingSMS()
     {
         $sendableSms = R::find('sms', ' is_sent = 0');
@@ -53,6 +88,12 @@ class SMSForwarder extends GPRS_SMS_API implements SMSProcessor
         }
     }
 
+    /**
+     * setSmsLastIndex
+     * 
+     * @access public
+     * @return void
+     */
     public function setSmsLastIndex()
     {
         $lastSms = R::findOne('sms', ' ORDER BY id DESC LIMIT 1');
