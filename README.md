@@ -1,7 +1,6 @@
 # GPRS-Google Voice
 
-> Author: Joseph Persie
-> Version: $id$
+ >Author: Joseph Persie | Version: 0.1
 
 The purpose of the repository is to house multiple libraries and useful scripts related to interfacing a GPRS shield and Google voice.
 
@@ -20,10 +19,14 @@ this is a script that connects to a GRPS shield through USB serial port. The scr
 * Create a database named GPRS and configure the database username and password. Thats it!
 
 ```sh
-$ mysql> CREATE DATABASE gprs;
+mysql> CREATE DATABASE gprs;
 ```
 
-* sudo apt-get install mplayer
+* You need to install mapler to play the MP3's
+
+```sh
+$ sudo apt-get install mplayey
+```
 
 ##### Usage
 
@@ -49,7 +52,12 @@ $ ./gprs -d /dev/ttyACMO
 
 ```sh
 $ ./googleVoice
+```
 
-
-
+#####LINKS
+* GPRS Shield Documentation
+http://www.seeedstudio.com/wiki/GPRS_Shield_V1.0
+* SIM900  AT Commands Manual
+http://www.seeedstudio.com/wiki/images/a/a8/SIM900_AT_Command_Manual_V1.03.pdf
+* Youtube videos coming soon
 

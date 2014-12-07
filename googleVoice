@@ -5,6 +5,8 @@ $options = getopt('u:p:n:m:h::');
 
 extract($options);
 
+//$p = "password here"; 
+
 if(isset($h) || !isset($u) || !isset($p) || !isset($n) || !isset($m))
 {
     echo "usage: ./googleVoice -u [google voice email] -p [google voice password] -n [recipient phone number] -m [message]"; 
