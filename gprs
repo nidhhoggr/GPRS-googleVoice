@@ -1,0 +1,30 @@
+#!/usr/bin/php
+<?php
+$options = getopt('d:');
+
+if(!isset($options['d']))
+{
+    Throw new Exception('Must specify a device'); 
+}
+else if(!file_exists($options['d']))
+{
+    Throw new Exception('No such device: ' . $options['d']); 
+}
+
+require_once('autoload.php');
+
+$serial = new PhpSerial;
+
+$smsF = new SMSForwarder($serial, $options['d']);
+
+$smsF->processIncomingSMS();
+
+$smsF->boot_load();
+
+$smsF->setSmsLastIndex();
+
+$smsF->listAllIncomingSMSFromLastIndex(function($sms) { 
+    var_dump($sms);
+}); 
+
+

@@ -1,0 +1,19 @@
+#!/usr/bin/php
+<?php
+
+$options = getopt('u:p:n:m:h::');
+
+extract($options);
+
+if(isset($h) || !isset($u) || !isset($p) || !isset($n) || !isset($m))
+{
+    echo "usage: ./googleVoice -u [google voice email] -p [google voice password] -n [recipient phone number] -m [message]"; 
+}
+else
+{
+  include('autoload.php');
+
+  $gv = new GoogleVoice($u, $p);
+
+  $gv->sms($n, $m);
+}

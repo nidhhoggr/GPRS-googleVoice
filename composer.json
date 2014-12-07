@@ -1,0 +1,27 @@
+{
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "redbeanphp",
+                "version": "master",
+                "dist": {
+                    "url": "http://www.redbeanphp.com/downloadredbean.php",
+                    "type": "tar"
+                }
+            }
+        }
+
+    ],
+    
+    "require": {
+        "redbeanphp": "master"
+    },
+    
+    "autoload": {
+        "files": [
+            "vendor/redbeanphp/rb.php"
+        ]
+    },
+    "minimum-stability": "dev"
+}
