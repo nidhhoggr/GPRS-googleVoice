@@ -1,13 +1,13 @@
 # GPRS-Goole Voice
 
 > Author: Joseph Persie
-
+> Version: $id$
 
 The purpose of the repository is to house multiple libraries and useful scripts related to interfacing a GPRS shield and goofle voice.
 
 ###SMSForwarder
 
-this is a script that connects to a GRPS shield through USB server port. The script checks for any new SMS test messages and saves them to a database. to process the SMS records the script utilizes the google translate API to download an MP3 containing the message in the SMS record and player the record using MPLAYER. After the record is played the record is updated as is_sent(boolean).
+this is a script that connects to a GRPS shield through USB serial port. The script checks for any new SMS text messages and saves them to a database. to process the SMS records the script utilizes the google translate API to download an MP3 containing the message in the SMS record and plays the record using Mplayer. After the record is played the record is updated as is_sent(boolean).
 
 #####TODO
 
@@ -18,6 +18,12 @@ this is a script that connects to a GRPS shield through USB server port. The scr
 ##### Installation
 
 * Create a database named GPRS and configure the database username and password. Thats it!
+
+```sh
+$ mysql> CREATE DATABASE gprs;
+```
+
+* sudo apt-get install mplayer
 
 ##### Usage
 
