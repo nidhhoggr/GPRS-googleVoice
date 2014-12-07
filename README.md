@@ -1,9 +1,9 @@
-# GPRS-Goole Voice
+# GPRS-Google Voice
 
 > Author: Joseph Persie
 > Version: $id$
 
-The purpose of the repository is to house multiple libraries and useful scripts related to interfacing a GPRS shield and goofle voice.
+The purpose of the repository is to house multiple libraries and useful scripts related to interfacing a GPRS shield and Google voice.
 
 ###SMSForwarder
 
