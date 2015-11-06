@@ -1,21 +1,25 @@
 #!/usr/bin/php
 <?php
 
-$options = getopt('u:p:n:m:h::');
+$options = getopt('u:p:n:m:f:h::');
 
 extract($options);
 
 //$p = "password here"; 
 
-if(isset($h) || !isset($u) || !isset($p) || !isset($n) || !isset($m))
+if(isset($h) || !isset($u) || !isset($p) || !isset($n) || (!isset($m) && !isset($f)))
 {
-    echo "usage: ./googleVoice -u [google voice email] -p [google voice password] -n [recipient phone number] -m [message]"; 
+    echo "usage: ./googleVoice -u [google voice email] -p [google voice password] -n [recipient phone number or from phone number for calls] -m [message] -f [to phone number for calls only]"; 
 }
 else
 {
   include('autoload.php');
 
   $gv = new GoogleVoice($u, $p);
-
-  $gv->sms($n, $m);
+  
+  if(isset($m)) { 
+    $gv->sendSMS($n, $m);
+  } else if(isset($f)) {
+    $gv->callNumber($n, $f);
+  }
 }
